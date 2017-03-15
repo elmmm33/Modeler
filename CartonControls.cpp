@@ -15,9 +15,19 @@ void CartonControls(ModelerControl* controls)
 	controls[HEAD_ROTATE_Y] = ModelerControl("Head rotation Y", -60, 60, 0.01f, 0);
 	controls[HEAD_ROTATE_Z] = ModelerControl("Head rotation Z", -30, 30, 0.01f, 0);
 
-	controls[BODY_ROTATE_X] = ModelerControl("body rotation X", -30, 30, 0.01f, 0);
-	controls[BODY_ROTATE_Y] = ModelerControl("body rotation Y", -60, 60, 0.01f, 0);
-	controls[BODY_ROTATE_Z] = ModelerControl("body ratation Z", -30, 30, 0.01f, 0);
+	controls[BODY_ROTATE_X] = ModelerControl("body rotation X", -30, 50, 0.01f, 0);
+	controls[BODY_ROTATE_Y] = ModelerControl("body rotation Y", -15, 15, 0.01f, 0);
+	controls[BODY_ROTATE_Z] = ModelerControl("body ratation Z", -10, 10, 0.01f, 0);
+
+	controls[LEFT_UPPER_ARM_ROTATE_X] = ModelerControl("Left arm rotation X", -90, 50, 0.01f, 0);
+	controls[LEFT_UPPER_ARM_ROTATE_Y] = ModelerControl("Left arm rotation Y", -30, 30, 0.01f, 0);
+	controls[LEFT_UPPER_ARM_ROTATE_Z] = ModelerControl("Left arm rotation Z", -90, 30, 0.01f, 0);
+
+	controls[LEFT_LOWER_ARM_ROTATE_X] = ModelerControl("left hand rotation X", -90, 50, 0.01f, 0);
+	controls[LEFT_LOWER_ARM_ROTATE_Y] = ModelerControl("left hand rotation Y", -30, 10, 0.01f, 0);
+	controls[LEFT_LOWER_ARM_ROTATE_Z] = ModelerControl("left hand rotation Z", -90, 30, 0.01f, 0);
+
+
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
 	controls[HEAD_HEIGHT] = ModelerControl("Head height", 0.0, 4.0, 0.01f, 2.0);
@@ -27,22 +37,25 @@ void CartonControls(ModelerControl* controls)
 	controls[BODY_HEIGHT] = ModelerControl("Body height", 0.0, 2.0, 0.01f, 1.8);
 	controls[BODY_DEPTH] = ModelerControl("Body depth", 0.0, 2.0, 0.01f, 1.5);
 
-	controls[UPPER_ARM_WIDTH] = ModelerControl("upper arm width", 0.0, 2.0, 0.01f, 1.0);
+	controls[UPPER_ARM_WIDTH] = ModelerControl("upper arm width", 0.0, 2.0, 0.01f, 0.65);
 	controls[UPPER_ARM_HEIGHT] = ModelerControl("upper arm height", 0.0, 3.0, 0.01f, 1.5);
 	controls[UPPER_ARM_DEPTH] = ModelerControl("upper arm depth", 0.0, 2.0, 0.01f, 1.0);
 
-	controls[LOWER_ARM_WIDTH] = ModelerControl("lower arm width", 0.0, 2.0, 0.01f, 1.0);
-	controls[LOWER_ARM_HEIGHT] = ModelerControl("lower arm height", 0.0, 3.0, 0.01f, 0.5);
-	controls[LOWER_ARM_DEPTH] = ModelerControl("lower arm depth", 0.0, 2.0, 0.01f, 1.0);
+	controls[LOWER_ARM_WIDTH] = ModelerControl("lower arm width", 0.0, 2.0, 0.01f, 0.65);
+	controls[LOWER_ARM_HEIGHT] = ModelerControl("lower arm height", 0.0, 3.0, 0.01f, 0.7);
+	controls[LOWER_ARM_DEPTH] = ModelerControl("lower arm depth", 0.0, 2.0, 0.01f, 0.8);
 
-	controls[UPPER_LEG_WIDTH] = ModelerControl("upper  leg width", 0.0, 1.5, 0.01f, 0.9);
-	controls[UPPER_LEG_HEIGHT] = ModelerControl("upper leg height", 0.0, 1.5, 0.01f, 0.7);
+	controls[UPPER_LEG_WIDTH] = ModelerControl("upper  leg width", 0.0, 1.5, 0.01f, 0.8);
+	controls[UPPER_LEG_HEIGHT] = ModelerControl("upper leg height", 0.0, 3.0, 0.01f, 1.7);
 	controls[UPPER_LEG_DEPTH] = ModelerControl("upper leg depth", 0.0, 1.5, 0.01f, 0.8);
 
-	controls[LOWER_LEG_WIDTH] = ModelerControl("lower  leg width", 0.0, 1.5, 0.01f, 1.0);
-	controls[LOWER_LEG_HEIGHT] = ModelerControl("lower leg height", 0.0, 1.5, 0.01f, 0.3);
+	controls[LOWER_LEG_WIDTH] = ModelerControl("lower  leg width", 0.0, 1.5, 0.01f, 0.8);
+	controls[LOWER_LEG_HEIGHT] = ModelerControl("lower leg height", 0.0, 1.5, 0.01f, 0.5);
 	controls[LOWER_LEG_DEPTH] = ModelerControl("lower leg depth", 0.0, 1.5, 0.01f, 0.8);
 
+
+	controls[EYE_SLIDE] = ModelerControl("eye size", 0.0, 1.5, 0.01f, 0.4);
+	//controls[ARM_CONNECT_SLIDE] = ModelerControl("arm connect size", 0.0, 1.5, 0.01f, 0.6);
 
 
 	controls[DETAIL_LEVEL] = ModelerControl("Level of detail", 0, 5, 1, 5);
