@@ -27,6 +27,29 @@ void CartonControls(ModelerControl* controls)
 	controls[LEFT_LOWER_ARM_ROTATE_Y] = ModelerControl("left hand rotation Y", -30, 10, 0.01f, 0);
 	controls[LEFT_LOWER_ARM_ROTATE_Z] = ModelerControl("left hand rotation Z", -90, 30, 0.01f, 0);
 
+	controls[RIGHT_UPPER_ARM_ROTATE_X] = ModelerControl("right arm rotation X", -90, 50, 0.01f, 0);
+	controls[RIGHT_UPPER_ARM_ROTATE_Y] = ModelerControl("right arm rotation Y", -30, 30, 0.01f, 0);
+	controls[RIGHT_UPPER_ARM_ROTATE_Z] = ModelerControl("right arm rotation Z", -30, 90, 0.01f, 0);
+
+	controls[RIGHT_LOWER_ARM_ROTATE_X] = ModelerControl("right hand rotation X", -90, 50, 0.01f, 0);
+	controls[RIGHT_LOWER_ARM_ROTATE_Y] = ModelerControl("right hand rotation Y", -10, 30, 0.01f, 0);
+	controls[RIGHT_LOWER_ARM_ROTATE_Z] = ModelerControl("right hand rotation Z", -30, 90, 0.01f, 0);
+
+	controls[LEFT_UPPER_LEG_ROTATE_X] = ModelerControl("right leg rotation X", -90, 50, 0.01f, 0);
+	controls[LEFT_UPPER_LEG_ROTATE_Y] = ModelerControl("right leg rotation Y", -30, 30, 0.01f, 0);
+	controls[LEFT_UPPER_LEG_ROTATE_Z] = ModelerControl("right leg rotation Z", -30, 90, 0.01f, 0);
+
+	controls[LEFT_LOWER_LEG_ROTATE_X]  = ModelerControl("right feet rotation X", -50, 50, 0.01f, 0);
+	controls[LEFT_LOWER_LEG_ROTATE_Y] = ModelerControl("right feet rotation Y", -30, 30, 0.01f, 0);
+	controls[LEFT_LOWER_LEG_ROTATE_Z] = ModelerControl("right feet rotation Z", -15, 30, 0.01f, 0);
+
+	controls[RIGHT_UPPER_LEG_ROTATE_X] = ModelerControl("left leg rotation X", -90, 50, 0.01f, 0);
+	controls[RIGHT_UPPER_LEG_ROTATE_Y] = ModelerControl("left leg rotation Y", -30, 30, 0.01f, 0);
+	controls[RIGHT_UPPER_LEG_ROTATE_Z] = ModelerControl("left leg rotation Z", -90, 30, 0.01f, 0);
+
+	controls[RIGHT_LOWER_LEG_ROTATE_X] = ModelerControl("left  feet rotation X", -50, 50, 0.01f, 0);
+	controls[RIGHT_LOWER_LEG_ROTATE_Y] = ModelerControl("left feet rotation Y", -30, 30, 0.01f, 0);
+	controls[RIGHT_LOWER_LEG_ROTATE_Z] = ModelerControl("left feet rotation Z", -30, 15, 0.01f, 0);
 
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
@@ -51,7 +74,8 @@ void CartonControls(ModelerControl* controls)
 
 	controls[LOWER_LEG_WIDTH] = ModelerControl("lower  leg width", 0.0, 1.5, 0.01f, 0.8);
 	controls[LOWER_LEG_HEIGHT] = ModelerControl("lower leg height", 0.0, 1.5, 0.01f, 0.5);
-	controls[LOWER_LEG_DEPTH] = ModelerControl("lower leg depth", 0.0, 1.5, 0.01f, 0.8);
+	controls[LOWER_LEG_DEPTH] = ModelerControl("lower leg depth", 0.0, 1.5, 0.01f, 0.9);
+
 
 
 	controls[EYE_SLIDE] = ModelerControl("eye size", 0.0, 1.5, 0.01f, 0.4);
