@@ -65,9 +65,7 @@ void CartonControls(ModelerControl* controls)
 	controls[RIGHT_LOWER_LEG_ROTATE_Z] = ModelerControl("left feet rotation Z", -30, 15, 0.01f, 0);
 
 	controls[TEXTURE_MODE] = ModelerControl("texture mode", 0, 1, 1, 0);
-	controls[TEXTURE_SIZE] = ModelerControl("Texture Size", 1, 10, 1, 3);
-	controls[TEXTURE_X] = ModelerControl("Texture X", -10, 10, 0.01f, 0);
-	controls[TEXTURE_Z] = ModelerControl("Texture Z", -10, 10, 0.01f, -3.0);
+
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
 	controls[HEAD_HEIGHT] = ModelerControl("Head height", 0.0, 4.0, 0.01f, 2.0);

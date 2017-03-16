@@ -11,8 +11,10 @@ public:
 		: ModelerView(x, y, w, h, label) { }
 	GLuint texName;
 	unsigned char * image = NULL;
+	char* textureFileName = NULL;
 	virtual void draw();
-	void drawTexture(int drawWidth, int drawHeight, int drawDepth);
+	void setTextureFile(char* path) { this->textureFileName = path;}
+	void drawTexture(double drawWidth, double drawHeight, double drawDepth);
 };
 
-#endif // _KUMAMODEL_H#pragma once
+#endif
