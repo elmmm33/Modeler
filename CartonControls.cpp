@@ -66,6 +66,7 @@ void CartonControls(ModelerControl* controls)
 
 	controls[TEXTURE_MODE] = ModelerControl("texture mode", 0, 1, 1, 0);
 	controls[DRAW_METABALLS] = ModelerControl("draw metaballs", 0, 1, 1, 0);
+	controls[DRAW_TORUS] = ModelerControl("draw torus", 0, 1, 1, 0);
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
 	controls[HEAD_HEIGHT] = ModelerControl("Head height", 0.0, 4.0, 0.01f, 2.0);
