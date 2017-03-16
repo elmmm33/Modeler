@@ -50,7 +50,8 @@ public:
     // Get and set slider values.
     double GetControlValue(int controlNumber);
     void   SetControlValue(int controlNumber, double value);
-
+	bool   GetAnimation();
+	void   SetAnimation(bool);
 private:
 	// Private for singleton
 	ModelerApplication() : m_numControls(-1) {}
