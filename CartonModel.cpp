@@ -17,6 +17,7 @@ using namespace std;
 //extern void Carton_LSystemSetup();
 extern vector<AnimationDef*>* CartonAnimes;
 extern void CartonAnimationsSetup();
+extern void drawMetaball(int numMetaballs, const vector< vector<float> >& balls);
 
 extern void CartonControls(ModelerControl* controls);
 extern void CartonSetupLights();
@@ -57,10 +58,9 @@ void CartonModel::draw()
 
 	//CartonDrawLSystems();
 
+
 	// starting  draw the model
 	setAmbientColor(0.1f, 0.1f, 0.1f);
-
-
 	setDiffuseColor(CARTON_MAIN_COLOR);
 	glPushMatrix(); // start
 	{
@@ -163,37 +163,49 @@ void CartonModel::draw()
 				glRotated(headRotateZ, 0, 0, 1);
 				glTranslated(-headWidth / 2, 0, -headDepth / 2);
 
-				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				static vector< vector<float> > headBalls = { { 0.0f, 0.0f, 0.0f, 5.0f },{ -6.0f, 6.7f, 0.0f, 2.0f },{ 6.0f, 6.7f, 0.0f, 2.0f } };
+				if (VAL(DRAW_METABALLS) > 0)
 				{
 					glPushMatrix();
 					{
-						//setTextureFile("./res/skin.bmp");
-						setTextureFile(CARTON_SKIN_TEXTURE);
-						drawTexture(headWidth, headHeight, headDepth);
+						glTranslated(headWidth / 2, 0.50, headDepth / 2);
+						glScaled(0.1, 0.1, 0.1);
+						drawMetaball(headBalls.size(), headBalls);
 					}
 					glPopMatrix();
 				}
-				else
-				{
-					drawBox(headWidth, headHeight, headDepth);
-				};
-				
 
-				// eyes
-				setDiffuseColor(CARTON_EYE_COLOR); 
-				glPushMatrix();
-				if (detailLevel > 4)
-				{
-					//left eye
-					glTranslated((headWidth / 4) - (eyeSlide / 2), 0.8, headDepth);
-					drawBox(eyeSlide, eyeSlide, 0.1f);
-					//right eye
-					glTranslated(2*(headWidth / 4), 0, 0);
-					drawBox(eyeSlide, eyeSlide, 0.1f);
-				};
-				glPopMatrix(); // end eyes
+				else {
+
+						if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+						{
+							glPushMatrix();
+							{
+								//setTextureFile("./res/skin.bmp");
+								setTextureFile(CARTON_SKIN_TEXTURE);
+								drawTexture(headWidth, headHeight, headDepth);
+							}
+							glPopMatrix();
+						}
+						else { drawBox(headWidth, headHeight, headDepth); };
+
+						// eyes
+						setDiffuseColor(CARTON_EYE_COLOR); 
+						glPushMatrix();
+						if (detailLevel > 4)
+						{
+							//left eye
+							glTranslated((headWidth / 4) - (eyeSlide / 2), 0.8, headDepth);
+							drawBox(eyeSlide, eyeSlide, 0.1f);
+							//right eye
+							glTranslated(2*(headWidth / 4), 0, 0);
+							drawBox(eyeSlide, eyeSlide, 0.1f);
+						};
+						glPopMatrix(); // end eyes
+					};
+					glPopMatrix(); // end head
 			};
-			glPopMatrix(); // end head
+			
 
 
 			// left arm
@@ -210,6 +222,7 @@ void CartonModel::draw()
 				glRotated(leftUpperArmZ, 0, 0, 1);
 				glTranslated(-upperArmWidth/2, -upperArmHeight, -upperArmDepth/2);
 
+				//printf("%f,%f,%f", -bodyWidth + upperArmWidth / 2, totalHeight - headHeight, temp_upperArmDepth);
 				drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
 	
 

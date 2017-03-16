@@ -159,6 +159,8 @@
     <ClCompile Include="CartonControls.cpp" />
     <ClCompile Include="CartonExternFunc.cpp" />
     <ClCompile Include="CartonModel.cpp" />
+    <ClCompile Include="CUBE_GRID.cpp" />
+    <ClCompile Include="Metaball.cpp" />
     <ClCompile Include="modelerapp.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -191,7 +193,9 @@
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="CartonModel.h" />
+    <ClInclude Include="CUBE_GRID.h" />
     <ClInclude Include="mat.h" />
+    <ClInclude Include="Metaball.h" />
     <ClInclude Include="modelerapp.h" />
     <ClInclude Include="modelerdraw.h" />
     <ClInclude Include="modelerglobals.h" />
@@ -199,6 +203,7 @@
     <ClInclude Include="modelerview.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="vec.h" />
+    <ClInclude Include="VECTOR3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
