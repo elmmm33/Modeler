@@ -28,10 +28,11 @@ extern void CartonHandleAnime();
 #define CARTON_LOWER_COLOR 0.88f, 1.0f, 1.0f
 #define CARTON_CONNECT_COLOR 0.88f, 1.0f, 1.0f
 #define CARTON_BODY_COLOR 0.53f, 0.81f, 0.92f
-#define CARTON_EYE_COLOR 0.88f, 1.0f, 1.0f
+#define CARTON_EYE_COLOR 0.0f, 0.0f, 0.0f
 #define TORUS_CORLOR 	0.96f, 0.96f, 0.86f
 
 #define CARTON_SKIN_TEXTURE "./res/skin.bmp"
+#define CARTON_CLOTHES_TEXTURE "./res/clothes.bmp"
 
 // using funciton to create a new model (such as head, arm)
 ModelerView* createCartonModel(int x, int y, int w, int h, char *modelname)
@@ -235,8 +236,16 @@ void CartonModel::draw()
 				glRotated(leftUpperArmZ, 0, 0, 1);
 				glTranslated(-upperArmWidth/2, -upperArmHeight, -upperArmDepth/2);
 
-				//printf("%f,%f,%f", -bodyWidth + upperArmWidth / 2, totalHeight - headHeight, temp_upperArmDepth);
-				drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
+				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				{
+					glPushMatrix();
+					{
+						setTextureFile(CARTON_SKIN_TEXTURE);
+						drawTexture(upperArmWidth, upperArmHeight, upperArmWidth);
+					}
+					glPopMatrix();
+				}
+				else { drawBox(upperArmWidth, upperArmHeight, upperArmWidth); }
 	
 
 				//drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
@@ -251,7 +260,17 @@ void CartonModel::draw()
 					glRotated(leftlowerArmY, 0, 1, 0);
 					glRotated(leftlowerArmZ, 0, 0, 1);
 					glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth/2 );
-					drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+
+					if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+					{
+						glPushMatrix();
+						{
+							setTextureFile(CARTON_SKIN_TEXTURE);
+							drawTexture(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+						}
+						glPopMatrix();
+					}
+					else drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
 				}
 				glPopMatrix(); // end left lower arm
 			}
@@ -269,7 +288,17 @@ void CartonModel::draw()
 				glRotated(rightUpperArmY, 0, 1, 0);
 				glRotated(rightUpperArmZ, 0, 0, 1);
 				glTranslated(-upperArmWidth / 2, -upperArmHeight, -upperArmDepth / 2);
-				drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
+
+				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				{
+					glPushMatrix();
+					{
+						setTextureFile(CARTON_SKIN_TEXTURE);
+						drawTexture(upperArmWidth, upperArmHeight, upperArmWidth);
+					}
+					glPopMatrix();
+				}
+				else drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
 
 				glPushMatrix();// right lower arm
 				if (detailLevel > 3)
@@ -281,7 +310,17 @@ void CartonModel::draw()
 					glRotated(rightlowerArmY, 0, 1, 0);
 					glRotated(rightlowerArmZ, 0, 0, 1);
 					glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth / 2);
-					drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+
+					if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+					{
+						glPushMatrix();
+						{
+							setTextureFile(CARTON_SKIN_TEXTURE);
+							drawTexture(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+						}
+						glPopMatrix();
+					}
+					else drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
 				}
 				glPopMatrix(); // end left lower arm
 			}
@@ -289,7 +328,17 @@ void CartonModel::draw()
 
 			setDiffuseColor(CARTON_BODY_COLOR);
 			glTranslated(-(headWidth / 2)+(headWidth-bodyWidth)/2, totalHeight-headHeight, (headDepth-bodyDepth)/2);
-			drawBox(bodyWidth, bodyHeight, bodyDepth);
+			if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+			{
+				glPushMatrix();
+				{
+					setTextureFile(CARTON_CLOTHES_TEXTURE);
+					drawTexture(bodyWidth, bodyHeight, bodyDepth);
+				}
+				glPopMatrix();
+			}
+			
+			else drawBox(bodyWidth, bodyHeight, bodyDepth);
 		}
 		glPopMatrix(); // end body
 
@@ -305,7 +354,16 @@ void CartonModel::draw()
 			glRotated(leftUpperLegY, 0, 1, 0);
 			glRotated(leftUpperLegZ, 0, 0, 1);
 			glTranslated(-upperLegWidth / 2, -upperLegHeight, -upperArmWidth / 2);
-			drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
+			if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+			{
+				glPushMatrix();
+				{
+					setTextureFile(CARTON_SKIN_TEXTURE);
+					drawTexture(upperLegWidth, upperLegHeight, upperLegDepth);
+				}
+				glPopMatrix();
+			}
+			else drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
 			
 			glPushMatrix(); // left lower leg
 			if (detailLevel > 3)
@@ -317,7 +375,17 @@ void CartonModel::draw()
 				glRotated(leftLowerLegY, 0, 1, 0);
 				glRotated(leftLowerLegZ, 0, 0, 1);
 				glTranslated(-lowerLegWidth / 2, 0, -lowerArmWidth / 2);
-				drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+
+				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				{
+					glPushMatrix();
+					{
+						setTextureFile(CARTON_SKIN_TEXTURE);
+						drawTexture(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+					}
+					glPopMatrix();
+				}
+				else drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
 			}
 			glPopMatrix(); // end left lower leg
 		}
@@ -334,7 +402,16 @@ void CartonModel::draw()
 			glRotated(rightUpperLegY, 0, 1, 0);
 			glRotated(rightUpperLegZ, 0, 0, 1);
 			glTranslated(-upperLegWidth / 2, -upperLegHeight, -upperArmWidth / 2);
-			drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
+			if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+			{
+				glPushMatrix();
+				{
+					setTextureFile(CARTON_SKIN_TEXTURE);
+					drawTexture(upperLegWidth, upperLegHeight, upperLegDepth);
+				}
+				glPopMatrix();
+			}
+			else drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
 
 			glPushMatrix(); // right lower leg
 			if (detailLevel > 3)
@@ -346,9 +423,19 @@ void CartonModel::draw()
 				glRotated(rightLowerLegY, 0, 1, 0);
 				glRotated(rightLowerLegZ, 0, 0, 1);
 				glTranslated(-lowerLegWidth / 2, 0, -lowerArmWidth / 2);
-				drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				{
+					glPushMatrix();
+					{
+						setTextureFile(CARTON_SKIN_TEXTURE);
+						drawTexture(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+					}
+					glPopMatrix();
+				}
+				else drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
 			}
 			glPopMatrix(); // right left lower leg
+
 		}
 		glPopMatrix();
 		
