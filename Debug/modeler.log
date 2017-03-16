@@ -1,4 +1,8 @@
-﻿  CartonModel.cpp
+﻿  CartonExternFunc.cpp
+c:\users\sherry kwok\desktop\modeler\cartonexternfunc.cpp(22): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\sherry kwok\desktop\modeler\cartonexternfunc.cpp(23): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\sherry kwok\desktop\modeler\cartonexternfunc.cpp(24): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\sherry kwok\desktop\modeler\cartonexternfunc.cpp(25): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
 bitmap.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
 fltkd.lib(case.obj) : warning LNK4099: PDB 'fltk.pdb' was not found with 'fltkd.lib(case.obj)' or at 'C:\Users\sherry kwok\Desktop\Modeler\Debug\fltk.pdb'; linking object as if no debug info
 fltkd.lib(filename_absolute.obj) : warning LNK4099: PDB 'fltk.pdb' was not found with 'fltkd.lib(filename_absolute.obj)' or at 'C:\Users\sherry kwok\Desktop\Modeler\Debug\fltk.pdb'; linking object as if no debug info

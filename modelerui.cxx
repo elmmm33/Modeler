@@ -301,6 +301,10 @@ void ModelerUserInterface::cb_m_modelerWindow(Fl_Window* o, void* v) {
 }
 
 ModelerUserInterface::ModelerUserInterface() {
+	this->hasNewTexture = false;
+	//this->textureFileName = nullptr;
+	this->textureFileName = "./res/skin.bmp";
+
   Fl_Window* w;
   { Fl_Window* o = m_controlsWindow = new Fl_Window(395, 326, "CS 341 Modeler (SP02)");
     w = o;

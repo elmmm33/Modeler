@@ -16,6 +16,7 @@ using namespace std;
 //extern void Carton_LSystemSetup();
 //extern void CartonIK();
 extern void CartonControls(ModelerControl* controls);
+extern void CartonSetupLights();
 
 #define CARTON_MAIN_COLOR 	0.69f, 0.88f, 0.9f
 #define CARTON_LOWER_COLOR 0.88f, 1.0f, 1.0f
@@ -33,7 +34,8 @@ void CartonModel::draw()
 {
 
 	ModelerView::draw();
-
+	CartonSetupLights();
+		
 	// draw the floor
 	setAmbientColor(0.1f, 0.1f, 0.1f);
 	setDiffuseColor(1.0f, 1.0f, 1.0f);
@@ -140,8 +142,8 @@ void CartonModel::draw()
 			glRotated(bodyRotateZ, 0, 0, 1);
 			glTranslated(0 , -upperLegHeight-lowerLegHeight, -bodyDepth / 2);
 
-
-			glPushMatrix(); 	// draw head
+			// head
+			glPushMatrix(); 	// start head
 			if(detailLevel >1 )
 			{
 				
@@ -151,7 +153,21 @@ void CartonModel::draw()
 				glRotated(headRotateY, 0, 1, 0);
 				glRotated(headRotateZ, 0, 0, 1);
 				glTranslated(-headWidth / 2, 0, -headDepth / 2);
-				drawBox(headWidth, headHeight, headDepth);
+
+				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				{
+					//glPushMatrix();
+					{
+						//glTranslated(0, 0, 0 );
+						//drawTexture(headWidth, headHeight, headDepth);
+					}
+					//glPopMatrix();
+				}
+				else
+				{
+					drawBox(headWidth, headHeight, headDepth);
+				};
+				
 
 				// eyes
 				setDiffuseColor(CARTON_EYE_COLOR); 
@@ -183,7 +199,11 @@ void CartonModel::draw()
 				glRotated(leftUpperArmY, 0, 1, 0);
 				glRotated(leftUpperArmZ, 0, 0, 1);
 				glTranslated(-upperArmWidth/2, -upperArmHeight, -upperArmDepth/2);
+
 				drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
+	
+
+				//drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
 
 				glPushMatrix();// left lower arm
 				if (detailLevel > 3)

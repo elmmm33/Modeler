@@ -189,3 +189,8 @@ void ModelerApplication::SetAnimation(bool animation) {
 		m_animating = animation;
 	
 }
+
+ModelerUserInterface* ModelerApplication::GetPUI()
+{
+	return this->m_ui;
+}
