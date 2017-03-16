@@ -52,6 +52,8 @@ public:
     void   SetControlValue(int controlNumber, double value);
 	bool   GetAnimation();
 	void   SetAnimation(bool);
+
+	ModelerUserInterface* GetPUI();
 private:
 	// Private for singleton
 	ModelerApplication() : m_numControls(-1) {}

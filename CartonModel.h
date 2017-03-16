@@ -12,7 +12,7 @@ public:
 	GLuint texName;
 	unsigned char * image = NULL;
 	virtual void draw();
-	void drawTexture(int drawWidth);
+	void draw(int drawWidth);
 };
 
 #endif // _KUMAMODEL_H#pragma once
