@@ -70,6 +70,40 @@ void MakeHRotZ(Mat4f &m, float theta)
 	m[1][1] = cosTheta;
 }
 
+void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
+{
+	Vec3f forwardMV, sideMV, upMV;
+	Mat4f m;
+
+	forwardMV = at - eye;
+	upMV = up;
+	forwardMV.normalize();
+
+	/* Cross product ->
+	Side = forward x up */
+	sideMV = forwardMV ^ upMV;
+	sideMV.normalize();
+
+	/* Cross Product -> Recompute up as:
+	up = side x forward */
+	upMV = sideMV ^ forwardMV;
+
+	m[0][0] = sideMV[0];
+	m[1][0] = sideMV[1];
+	m[2][0] = sideMV[2];
+
+	m[0][1] = upMV[0];
+	m[1][1] = upMV[1];
+	m[2][1] = upMV[2];
+
+	m[0][2] = -forwardMV[0];
+	m[1][2] = -forwardMV[1];
+	m[2][2] = -forwardMV[2];
+
+	glMultMatrixf(&m[0][0]);
+	glTranslated(-eye[0], -eye[1], -eye[2]);
+
+}
 
 void Camera::calculateViewingTransformParameters() 
 {
@@ -176,11 +210,8 @@ void Camera::applyViewingTransform() {
 	if( mDirtyTransform )
 		calculateViewingTransformParameters();
 
-	// Place the camera at mPosition, aim the camera at
-	// mLookAt, and twist the camera such that mUpVector is up
-	gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
-				mLookAt[0],   mLookAt[1],   mLookAt[2],
-				mUpVector[0], mUpVector[1], mUpVector[2]);
+	lookAt(mPosition, mLookAt, mUpVector);
+	
 }
 
 #pragma warning(pop)
