@@ -8,13 +8,14 @@
 #include "bitmap.h"
 #include <FL/fl_ask.h>
 #include "modelerui.h"
-//#include "LSystem.h"
+#include "LSystem.h"
+#include "CartonLSystem.h"
 #include "CartonModel.h"
 #include "animation.h"
 using namespace std;
 
-//extern vector<LSystem*>*CartonSystems;
-//extern void Carton_LSystemSetup();
+extern vector<LSystem*>*CartonSystems;
+extern void CartonLSystemSetup();
 extern vector<AnimationDef*>* CartonAnimes;
 extern void CartonAnimationsSetup();
 extern void drawMetaball(int numMetaballs, const vector< vector<float> >& balls);
@@ -23,6 +24,7 @@ extern void drawTorus(double Xpos, double Ypos, double Zpos, double innerR, doub
 extern void CartonControls(ModelerControl* controls);
 extern void CartonSetupLights();
 extern void CartonHandleAnime();
+extern void CartonDrawLSystems();
 
 #define CARTON_MAIN_COLOR 	0.69f, 0.88f, 0.9f
 #define CARTON_LOWER_COLOR 0.88f, 1.0f, 1.0f
@@ -45,7 +47,7 @@ void CartonModel::draw()
 
 	ModelerView::draw();
 
-	//CartonAnimationsSetup();
+	CartonHandleAnime();
 
 	CartonSetupLights();
 		
@@ -59,7 +61,7 @@ void CartonModel::draw()
 	}
 	glPopMatrix();
 
-	//CartonDrawLSystems();
+	CartonDrawLSystems();
 
 
 	// starting  draw the model
@@ -304,7 +306,7 @@ void CartonModel::draw()
 				if (detailLevel > 3)
 				{
 					setDiffuseColor(CARTON_LOWER_COLOR);
-					glTranslated(0, -lowerArmHeight, 0);
+					glTranslated(0, -lowerArmHeight, -0.08);
 					glTranslated(lowerArmWidth/2, lowerArmHeight, lowerArmDepth / 2);
 					glRotated(rightlowerArmX, 1, 0, 0);
 					glRotated(rightlowerArmY, 0, 1, 0);
@@ -456,8 +458,8 @@ void CartonModel::draw()
 
 int main()
 {
-	//Carton_LSystemSetup();
-
+	CartonLSystemSetup();
+	CartonAnimationsSetup();
 	ModelerControl controls[NUMCONTROLS];
 	CartonControls(controls);
 

@@ -158,8 +158,10 @@
     </ClCompile>
     <ClCompile Include="CartonControls.cpp" />
     <ClCompile Include="CartonExternFunc.cpp" />
+    <ClCompile Include="CartonLSystem.cpp" />
     <ClCompile Include="CartonModel.cpp" />
     <ClCompile Include="CUBE_GRID.cpp" />
+    <ClCompile Include="LSystem.cpp" />
     <ClCompile Include="Metaball.cpp" />
     <ClCompile Include="modelerapp.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -192,8 +194,10 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="CartonLSystem.h" />
     <ClInclude Include="CartonModel.h" />
     <ClInclude Include="CUBE_GRID.h" />
+    <ClInclude Include="LSystem.h" />
     <ClInclude Include="mat.h" />
     <ClInclude Include="Metaball.h" />
     <ClInclude Include="modelerapp.h" />

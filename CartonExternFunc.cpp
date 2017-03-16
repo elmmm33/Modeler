@@ -4,11 +4,13 @@
 #include "modelerdraw.h"
 #include "CartonModel.h"
 #include "animation.h"
+#include "LSystem.h"
+#include "CartonLSystem.h"
 #include <vector>
 
-#define LSYSTEM_COLOR 0.13f, 0.694f, 0.298f
+#define LSYSTEM_COLOR 0.68f, 1.0f, 0.18f
 extern std::vector<AnimationDef*>* CartonAnimes;
-//extern std::vector<LSystem*>* kumaLSystems;
+extern std::vector<LSystem*>* CartonLSystems;
 
 
 void CartonSetupLights()
@@ -49,14 +51,18 @@ void CartonSetupLights()
 void CartonHandleAnime()
 {
 	static int currFrame = 0;
-
-	AnimationDef* anime = (*CartonAnimes)[0];
-	currFrame = currFrame % anime->size();
-	for (const auto& frameVar : (*(*anime)[currFrame]))
+	int animationMode = VAL(ANIMATION_MODE);
+	if (animationMode > 0)
 	{
-		SETVAL(frameVar.first, frameVar.second);
+		AnimationDef* anime = (*CartonAnimes)[animationMode-1];
+		currFrame = currFrame % anime->size();
+		for (const auto& frameVar : (*(*anime)[currFrame]))
+		{
+			SETVAL(frameVar.first, frameVar.second);
+		}
+		++currFrame;
 	}
-	++currFrame;
+
 	
 }
 
@@ -87,19 +93,20 @@ void drawTorus(double posX, double posY, double posZ, double innerR, double oute
 	glPopMatrix();
 }
 
-/*
-void kumaDrawLSystems()
+
+void CartonDrawLSystems()
 {
 	setDiffuseColor(LSYSTEM_COLOR);
-	int lsysSel = VAL(LSYSTEM_SELECTION) - 1;
-	if (lsysSel >= 0 && lsysSel < kumaLSystems->size())
+	int lsysSel = 1;
+	if (lsysSel >= 0 && lsysSel < CartonLSystems->size())
 	{
 		glPushMatrix();
 		{
-			glTranslated(-3, 0, -3);
+			glTranslated(-2, 0, 1);
 			glRotated(90, -1, 0, 0);
-			LSystem* sys = (*kumaLSystems)[lsysSel];
-			sys->runIteration(VAL(LSYSTEM_ITER));
+			glRotated(90, 0, -1, 0);
+			LSystem* sys = (*CartonLSystems)[lsysSel];
+			sys->runIteration(VAL(DRAW_LSYSTEM));
 			for (int opi : *(sys->ops))
 			{
 				if (sys->opMap.find(opi) != sys->opMap.end())
@@ -107,23 +114,23 @@ void kumaDrawLSystems()
 					auto op = sys->opMap[opi];
 					switch (op.first)
 					{
-					case KLS_FORWARD:
+					case CT_FORWARD:
 						if (op.second <= 0)
 							break;
 						drawBox(0.05 * op.second, 0.02, 0.02);
 						glTranslated(0.05 * op.second, 0, 0);
 						break;
-					case KLS_ROTATE_LEFT:
+					case CT_ROTATE_LEFT:
 						glRotated(-op.second, 0, 1, 0);
 						break;
-					case KLS_ROTATE_RIGHT:
+					case CT_ROTATE_RIGHT:
 						glRotated(op.second, 0, 1, 0);
 						break;
-					case KLS_ROTATE_LEFT_AND_PUSH:
+					case CT_ROTATE_LEFT_AND_PUSH:
 						glRotated(-op.second, 0, 1, 0);
 						glPushMatrix();
 						break;
-					case KLS_POP_AND_ROTATE_RIGHT:
+					case CT_POP_AND_ROTATE_RIGHT:
 						glPopMatrix();
 						glRotated(op.second, 0, 1, 0);
 						break;
@@ -142,4 +149,3 @@ void kumaDrawLSystems()
 
 
 
-*/
