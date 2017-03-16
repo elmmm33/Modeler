@@ -18,6 +18,7 @@ using namespace std;
 extern vector<AnimationDef*>* CartonAnimes;
 extern void CartonAnimationsSetup();
 extern void drawMetaball(int numMetaballs, const vector< vector<float> >& balls);
+extern void drawTorus(double Xpos, double Ypos, double Zpos, double innerR, double outerR, int numc, int numt);
 
 extern void CartonControls(ModelerControl* controls);
 extern void CartonSetupLights();
@@ -28,6 +29,7 @@ extern void CartonHandleAnime();
 #define CARTON_CONNECT_COLOR 0.88f, 1.0f, 1.0f
 #define CARTON_BODY_COLOR 0.53f, 0.81f, 0.92f
 #define CARTON_EYE_COLOR 0.88f, 1.0f, 1.0f
+#define TORUS_CORLOR 	0.96f, 0.96f, 0.86f
 
 #define CARTON_SKIN_TEXTURE "./res/skin.bmp"
 
@@ -151,7 +153,19 @@ void CartonModel::draw()
 			glRotated(bodyRotateZ, 0, 0, 1);
 			glTranslated(0 , -upperLegHeight-lowerLegHeight, -bodyDepth / 2);
 
+			// draw torus
+			if (VAL(DRAW_TORUS) > 0)
+			{
+				glPushMatrix();
+				{
+					setDiffuseColor(TORUS_CORLOR);
+					drawTorus(0.0, totalHeight + headHeight + 0.3, headDepth / 2, 0.15f, 0.8f, 20, 20);
+				}
+				glPopMatrix();
+			}
+
 			// head
+			setDiffuseColor(CARTON_MAIN_COLOR);
 			glPushMatrix(); 	// start head
 			if(detailLevel >1 )
 			{
@@ -181,7 +195,6 @@ void CartonModel::draw()
 						{
 							glPushMatrix();
 							{
-								//setTextureFile("./res/skin.bmp");
 								setTextureFile(CARTON_SKIN_TEXTURE);
 								drawTexture(headWidth, headHeight, headDepth);
 							}
