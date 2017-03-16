@@ -40,7 +40,7 @@ void CartonModel::draw()
 	glPushMatrix();
 	{
 		glTranslated(-5, 0, -5);
-		drawBox(10, 0.01f, 10);
+		drawTextureBox(10, 0.01f, 10);
 	}
 	glPopMatrix();
 
@@ -48,6 +48,8 @@ void CartonModel::draw()
 
 	// starting  draw the model
 	setAmbientColor(0.1f, 0.1f, 0.1f);
+
+
 	setDiffuseColor(CARTON_MAIN_COLOR);
 	glPushMatrix(); // start
 	{
@@ -158,10 +160,10 @@ void CartonModel::draw()
 				{
 					//left eye
 					glTranslated((headWidth / 4) - (eyeSlide / 2), 0.8, headDepth);
-					drawBox(eyeSlide, eyeSlide, 0.1f);
+					drawTextureBox(eyeSlide, eyeSlide, 0.1f);
 					//right eye
 					glTranslated(2*(headWidth / 4), 0, 0);
-					drawBox(eyeSlide, eyeSlide, 0.1f);
+					drawTextureBox(eyeSlide, eyeSlide, 0.1f);
 				};
 				glPopMatrix(); // end eyes
 			};
@@ -193,7 +195,7 @@ void CartonModel::draw()
 					glRotated(leftlowerArmY, 0, 1, 0);
 					glRotated(leftlowerArmZ, 0, 0, 1);
 					glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth/2 );
-					drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+					drawTextureBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
 				}
 				glPopMatrix(); // end left lower arm
 			}
@@ -223,7 +225,7 @@ void CartonModel::draw()
 					glRotated(rightlowerArmY, 0, 1, 0);
 					glRotated(rightlowerArmZ, 0, 0, 1);
 					glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth / 2);
-					drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+					drawTextureBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
 				}
 				glPopMatrix(); // end left lower arm
 			}
@@ -231,7 +233,7 @@ void CartonModel::draw()
 
 			setDiffuseColor(CARTON_BODY_COLOR);
 			glTranslated(-(headWidth / 2)+(headWidth-bodyWidth)/2, totalHeight-headHeight, (headDepth-bodyDepth)/2);
-			drawBox(bodyWidth, bodyHeight, bodyDepth);
+			drawTextureBox(bodyWidth, bodyHeight, bodyDepth);
 		}
 		glPopMatrix(); // end body
 
@@ -247,7 +249,7 @@ void CartonModel::draw()
 			glRotated(leftUpperLegY, 0, 1, 0);
 			glRotated(leftUpperLegZ, 0, 0, 1);
 			glTranslated(-upperLegWidth / 2, -upperLegHeight, -upperArmWidth / 2);
-			drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
+			drawTextureBox(upperLegWidth, upperLegHeight, upperLegDepth);
 			
 			glPushMatrix(); // left lower leg
 			if (detailLevel > 3)
@@ -259,7 +261,7 @@ void CartonModel::draw()
 				glRotated(leftLowerLegY, 0, 1, 0);
 				glRotated(leftLowerLegZ, 0, 0, 1);
 				glTranslated(-lowerLegWidth / 2, 0, -lowerArmWidth / 2);
-				drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+				drawTextureBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
 			}
 			glPopMatrix(); // end left lower leg
 		}
@@ -276,7 +278,7 @@ void CartonModel::draw()
 			glRotated(rightUpperLegY, 0, 1, 0);
 			glRotated(rightUpperLegZ, 0, 0, 1);
 			glTranslated(-upperLegWidth / 2, -upperLegHeight, -upperArmWidth / 2);
-			drawBox(upperLegWidth, upperLegHeight, upperLegDepth);
+			drawTextureBox(upperLegWidth, upperLegHeight, upperLegDepth);
 
 			glPushMatrix(); // right lower leg
 			if (detailLevel > 3)
@@ -288,7 +290,7 @@ void CartonModel::draw()
 				glRotated(rightLowerLegY, 0, 1, 0);
 				glRotated(rightLowerLegZ, 0, 0, 1);
 				glTranslated(-lowerLegWidth / 2, 0, -lowerArmWidth / 2);
-				drawBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
+				drawTextureBox(lowerLegWidth, lowerLegHeight, lowerArmDepth);
 			}
 			glPopMatrix(); // right left lower leg
 		}
