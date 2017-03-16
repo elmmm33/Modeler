@@ -11,6 +11,19 @@ void CartonControls(ModelerControl* controls)
 	controls[YPOS] = ModelerControl("Y Position", 0, 5, 0.1f, 0);
 	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
 
+	controls[DRAW_LIGHT] = ModelerControl("Draw lights", 0, 1, 1, 0);
+
+	controls[LIGHT0_X] = ModelerControl("Light 0 X", -10, 10, 0.1f, 4);
+	controls[LIGHT0_Y] = ModelerControl("Light 0 Y", -10, 10, 0.1f, 2);
+	controls[LIGHT0_Z] = ModelerControl("Light 0 Z", -10, 10, 0.1f, -4);
+	controls[LIGHT0_DIFFUSE] = ModelerControl("Light 0 Diffuse", 0, 5, 0.01f, 1);
+
+	controls[LIGHT1_X] = ModelerControl("Light 1 X", -10, 10, 0.1f, -2);
+	controls[LIGHT1_Y] = ModelerControl("Light 1 Y", -10, 10, 0.1f, 1);
+	controls[LIGHT1_Z] = ModelerControl("Light 1 Z", -10, 10, 0.1f, 5);
+	controls[LIGHT1_DIFFUSE] = ModelerControl("Light 1 Diffuse", 0, 5, 0.01f, 1);
+
+
 	controls[HEAD_ROTATE_X] = ModelerControl("Head rotation X", -30, 30, 0.01f, 0);
 	controls[HEAD_ROTATE_Y] = ModelerControl("Head rotation Y", -60, 60, 0.01f, 0);
 	controls[HEAD_ROTATE_Z] = ModelerControl("Head rotation Z", -30, 30, 0.01f, 0);
@@ -50,6 +63,8 @@ void CartonControls(ModelerControl* controls)
 	controls[RIGHT_LOWER_LEG_ROTATE_X] = ModelerControl("left  feet rotation X", -50, 50, 0.01f, 0);
 	controls[RIGHT_LOWER_LEG_ROTATE_Y] = ModelerControl("left feet rotation Y", -30, 30, 0.01f, 0);
 	controls[RIGHT_LOWER_LEG_ROTATE_Z] = ModelerControl("left feet rotation Z", -30, 15, 0.01f, 0);
+
+	controls[TEXTURE_MODE] = ModelerControl("texture mode", 0, 1, 1, 0);
 
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
