@@ -446,12 +446,7 @@ void CartonModel::draw()
 	glPopMatrix(); // end
 
 
-	// metaballs( not complete)
 
-
-	// Animation support ( not complete)
-
-	// LIghts (not complete)
 
 }
 
