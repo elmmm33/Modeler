@@ -3,13 +3,12 @@
 #include "modelerapp.h"
 #include "modelerdraw.h"
 #include "CartonModel.h"
-#include "animation.h"
 #include "LSystem.h"
 #include "CartonLSystem.h"
 #include <vector>
 
 #define LSYSTEM_COLOR 0.68f, 1.0f, 0.18f
-extern std::vector<AnimationDef*>* CartonAnimes;
+
 extern std::vector<LSystem*>* CartonLSystems;
 
 
@@ -48,24 +47,8 @@ void CartonSetupLights()
 	}
 }
 
-void CartonHandleAnime()
-{
-	static int currFrame = 0;
-	int animationMode = VAL(ANIMATION_MODE);
-	if (animationMode > 0)
-	{
-		AnimationDef* anime = (*CartonAnimes)[animationMode-1];
-		currFrame = currFrame % anime->size();
-		for (const auto& frameVar : (*(*anime)[currFrame]))
-		{
-			SETVAL(frameVar.first, frameVar.second);
-		}
-		++currFrame;
-	}
 
 	
-}
-
 void drawTorus(double posX, double posY, double posZ, double innerR, double outerR, int numc, int numt)
 {
 	glPushMatrix();

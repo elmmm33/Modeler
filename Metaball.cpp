@@ -39,13 +39,12 @@ void drawMetaball(int numMetaballs, const vector< vector<float> >& balls)
 
 		for (int j = 0; j<cubeGrid.numVertices; j++)
 		{
-			//ballToPoint=cubeGrid.vertices[j].position-ballPosition;
+
 			ballToPoint.x = cubeGrid.vertices[j].position.x - ballPosition.x;
 			ballToPoint.y = cubeGrid.vertices[j].position.y - ballPosition.y;
 			ballToPoint.z = cubeGrid.vertices[j].position.z - ballPosition.z;
 
-			//get squared distance from ball to point
-			//float squaredDistance=ballToPoint.GetSquaredLength();
+
 			float squaredDistance = ballToPoint.x*ballToPoint.x +
 				ballToPoint.y*ballToPoint.y +
 				ballToPoint.z*ballToPoint.z;
