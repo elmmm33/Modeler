@@ -1,10 +1,9 @@
 #include "modelerglobals.h"
 #include "modelerapp.h"
-#include "animation.h"
 #include "LSystem.h"
 #include <vector>
 
-extern std::vector<AnimationDef*>* CartonAnimes;
+
 extern std::vector<LSystem*>* CartonLSystems;
 
 void CartonControls(ModelerControl* controls)
@@ -70,7 +69,7 @@ void CartonControls(ModelerControl* controls)
 	controls[DRAW_METABALLS] = ModelerControl("draw metaballs", 0, 1, 1, 0);
 	controls[DRAW_TORUS] = ModelerControl("draw torus", 0, 1, 1, 0);
 	controls[DRAW_LSYSTEM] = ModelerControl("draw LSystem", 0, 10, 1, 1);
-	controls[ANIMATION_MODE] = ModelerControl("animation on", 0, CartonAnimes->size(), 1, 0);
+	//controls[ANIMATION_MODE] = ModelerControl("animation on", 0, CartonAnimes->size(), 1, 0);
 
 	controls[HEAD_WIDTH] = ModelerControl("Head width", 0.0, 4.0, 0.01f, 3.4);
 	controls[HEAD_HEIGHT] = ModelerControl("Head height", 0.0, 4.0, 0.01f, 2.0);

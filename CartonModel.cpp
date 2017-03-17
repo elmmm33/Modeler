@@ -11,19 +11,17 @@
 #include "LSystem.h"
 #include "CartonLSystem.h"
 #include "CartonModel.h"
-#include "animation.h"
 using namespace std;
 
 extern vector<LSystem*>*CartonSystems;
 extern void CartonLSystemSetup();
-extern vector<AnimationDef*>* CartonAnimes;
-extern void CartonAnimationsSetup();
+
 extern void drawMetaball(int numMetaballs, const vector< vector<float> >& balls);
 extern void drawTorus(double Xpos, double Ypos, double Zpos, double innerR, double outerR, int numc, int numt);
 
 extern void CartonControls(ModelerControl* controls);
 extern void CartonSetupLights();
-extern void CartonHandleAnime();
+
 extern void CartonDrawLSystems();
 
 #define CARTON_MAIN_COLOR 	0.69f, 0.88f, 0.9f
@@ -47,7 +45,7 @@ void CartonModel::draw()
 
 	ModelerView::draw();
 
-	CartonHandleAnime();
+
 
 	CartonSetupLights();
 		
@@ -238,43 +236,55 @@ void CartonModel::draw()
 				glRotated(leftUpperArmZ, 0, 0, 1);
 				glTranslated(-upperArmWidth/2, -upperArmHeight, -upperArmDepth/2);
 
-				if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+				static vector< vector<float> > leftArmBalls = { { -1.0f, 1.0f, -0.5f, 3.5f },{-1.0f, -8.0f, -0.5f, 3.5f } };
+				if (VAL(DRAW_METABALLS) > 0)
 				{
 					glPushMatrix();
 					{
-						setTextureFile(CARTON_SKIN_TEXTURE);
-						drawTexture(upperArmWidth, upperArmHeight, upperArmWidth);
+						glTranslated(upperArmWidth / 2, 1.0, upperArmDepth/2);
+						glScaled(0.1, 0.1, 0.1);
+						drawMetaball(leftArmBalls.size(), leftArmBalls);
 					}
 					glPopMatrix();
 				}
-				else { drawBox(upperArmWidth, upperArmHeight, upperArmWidth); }
-	
 
-				//drawBox(upperArmWidth, upperArmHeight, upperArmWidth);
-
-				glPushMatrix();// left lower arm
-				if (detailLevel > 3)
+				else
 				{
-					setDiffuseColor(CARTON_LOWER_COLOR);
-					glTranslated(0, -lowerArmHeight, 0);
-					glTranslated(lowerArmWidth / 2, lowerArmHeight, lowerArmWidth/2);
-					glRotated(leftlowerArmX, 1, 0, 0);
-					glRotated(leftlowerArmY, 0, 1, 0);
-					glRotated(leftlowerArmZ, 0, 0, 1);
-					glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth/2 );
-
 					if (VAL(TEXTURE_MODE) > 0) // texure mode is on
 					{
 						glPushMatrix();
 						{
 							setTextureFile(CARTON_SKIN_TEXTURE);
-							drawTexture(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+							drawTexture(upperArmWidth, upperArmHeight, upperArmWidth);
 						}
 						glPopMatrix();
 					}
-					else drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
-				}
-				glPopMatrix(); // end left lower arm
+					else { drawBox(upperArmWidth, upperArmHeight, upperArmWidth); }
+				
+					glPushMatrix();// left lower arm
+					if (detailLevel > 3)
+					{
+						setDiffuseColor(CARTON_LOWER_COLOR);
+						glTranslated(0, -lowerArmHeight, 0);
+						glTranslated(lowerArmWidth / 2, lowerArmHeight, lowerArmWidth/2);
+						glRotated(leftlowerArmX, 1, 0, 0);
+						glRotated(leftlowerArmY, 0, 1, 0);
+						glRotated(leftlowerArmZ, 0, 0, 1);
+						glTranslated(-lowerArmWidth / 2, -lowerArmHeight, -lowerArmWidth/2 );
+
+						if (VAL(TEXTURE_MODE) > 0) // texure mode is on
+						{
+							glPushMatrix();
+							{
+								setTextureFile(CARTON_SKIN_TEXTURE);
+								drawTexture(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+							}
+							glPopMatrix();
+						}
+						else drawBox(lowerArmWidth, lowerArmHeight, lowerArmDepth);
+					}
+					glPopMatrix(); // end left lower arm				
+				};
 			}
 			glPopMatrix(); // end left upper arm
 
@@ -454,7 +464,7 @@ void CartonModel::draw()
 int main()
 {
 	CartonLSystemSetup();
-	CartonAnimationsSetup();
+
 	ModelerControl controls[NUMCONTROLS];
 	CartonControls(controls);
 
